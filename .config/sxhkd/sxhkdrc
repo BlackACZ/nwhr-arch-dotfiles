@@ -1,0 +1,99 @@
+# ============================================
+# NWHR sxhkd Config
+# ============================================
+
+# -- Terminal -- #
+super + Return
+    alacritty
+
+# -- Kill window -- #
+super + x
+    bspc node -c
+
+# -- Rofi launcher -- #
+super + d
+    rofi -show drun -theme $HOME/.config/rofi/config.rasi
+
+# -- Quick bar (mac style) -- #
+super + space
+    rofi -show drun -theme $HOME/.config/rofi/quickbar.rasi
+
+# -- Reload sxhkd -- #
+super + Escape
+    pkill -USR1 -x sxhkd
+
+# -- Restart bspwm -- #
+super + alt + r
+    bspc wm -r
+
+# -- Logout -- #
+super + alt + q
+    bspc quit
+
+# ============================================
+# Window Management
+# ============================================
+
+# -- Focus window -- #
+super + {h,j,k,l}
+    bspc node -f {west,south,north,east}
+
+# -- Move window -- #
+super + shift + {h,j,k,l}
+    bspc node -s {west,south,north,east}
+
+# -- Switch workspace -- #
+super + {1-9,0}
+    bspc desktop -f '^{1-9,10}'
+
+# -- Send window to workspace -- #
+super + shift + {1-9,0}
+    bspc node -d '^{1-9,10}'
+
+# -- Toggle floating -- #
+super + f
+    bspc node -t '~floating'
+
+# -- Toggle fullscreen -- #
+super + shift + f
+    bspc node -t '~fullscreen'
+
+# -- Resize window -- #
+super + alt + {h,j,k,l}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# -- Preselect direction -- #
+super + ctrl + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+
+# -- Cancel preselect -- #
+super + ctrl + space
+    bspc node -p cancel
+
+# ============================================
+# Media & Brightness
+# ============================================
+
+# -- Volume -- #
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# -- Brightness -- #
+XF86MonoBrightnessUp
+    brightnessctl set +10%
+
+XF86MonoBrightnessDown
+    brightnessctl set 10%-
+
+# -- Screenshot -- #
+Print
+    scrot "$HOME/Pictures/screenshot_%Y%m%d_%H%M%S.png" && dunstify "Screenshot saved"
+
+shift + Print
+    scrot -s "$HOME/Pictures/screenshot_%Y%m%d_%H%M%S.png" && dunstify "Screenshot saved"
