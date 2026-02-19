@@ -1,0 +1,55 @@
+# ============================================
+# NWHR Alacritty Config
+# ============================================
+
+[window]
+padding = { x = 15, y = 15 }
+opacity = 0.90
+decorations = "None"
+
+[font]
+size = 11.0
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+# -- NWHR Gray Scale Colors -- #
+[colors.primary]
+background = "#0d0d0d"
+foreground = "#c8c8c8"
+
+[colors.cursor]
+text = "#0d0d0d"
+cursor = "#c8c8c8"
+
+[colors.normal]
+black   = "#1a1a1a"
+red     = "#d45e5e"
+green   = "#7ec49d"
+yellow  = "#d4b95e"
+blue    = "#5e81ac"
+magenta = "#a87ec4"
+cyan    = "#6ecfcf"
+white   = "#c8c8c8"
+
+[colors.bright]
+black   = "#555555"
+red     = "#e87575"
+green   = "#98d4b2"
+yellow  = "#e8d47a"
+blue    = "#7a9cc4"
+magenta = "#c49dd4"
+cyan    = "#8ee8e8"
+white   = "#e8e8e8"
+
+[keyboard]
+bindings = []
