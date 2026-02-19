@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Usage:
+#   set-target <ip>
+#   set-target <ip> <name>
+#   set-target <ip> <name> <flag/password>
+
+TARGET_FILE="/tmp/target"
+TARGET_DATA="$HOME/.targets"
+
+if [ -z "$1" ]; then
+    echo "Usage: set-target <ip> [name] [flag/password]"
+    exit 1
+fi
+
+ip="$1"
+name="${2:-}"
+flag="${3:-}"
+
+echo "$ip" > "$TARGET_FILE"
+[ -n "$name" ] && echo "$name" >> "$TARGET_FILE"
+
+# Save to persistent targets file
+mkdir -p "$(dirname "$TARGET_DATA")"
+echo "$(date '+%Y-%m-%d %H:%M') | $ip | $name | $flag" >> "$TARGET_DATA"
+
+echo "Target set: $ip ${name:+($name)} ${flag:+[flag: $flag]}"
