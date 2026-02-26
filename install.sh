@@ -12,6 +12,10 @@ DOTFILES_DIR="$(dirname "$0")"
 source "$SCRIPTS_DIR/utils.sh"
 check_root
 
+DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
+export DOTFILES_DIR
+
+
 echo ""
 echo -e "${cyan}========================================${nc}"
 echo -e "${cyan}     NWHR BSPWM Environment Installer   ${nc}"
